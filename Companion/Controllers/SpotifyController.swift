@@ -79,7 +79,6 @@ class SpotifyController: NSObject, ObservableObject {
 
     extension SpotifyController: SPTAppRemoteDelegate {
         func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-            self.appRemote = appRemote
             self.appRemote.playerAPI?.delegate = self
             self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
                 if let error = error {
@@ -98,16 +97,9 @@ class SpotifyController: NSObject, ObservableObject {
         }
     }
 
-    //extension SpotifyController: SPTAppRemotePlayerStateDelegate {
-    //    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-    //        debugPrint("Track name: %@", playerState.track.name)
-    //    }
-    //
-    //}
-
     extension SpotifyController: SPTAppRemotePlayerStateDelegate {
         func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
             // noop
         }
-        
+
 }

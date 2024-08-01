@@ -5,13 +5,6 @@
 //  Created by Tyler Davis on 7/26/24.
 //
 
-//
-//  ViewController.swift
-//  easyplay
-//
-//  Created by jrasmusson on 2022-03-21.
-//
-
 import SwiftUI
 
 struct ContentView: View {
