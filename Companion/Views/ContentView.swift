@@ -8,15 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var showScreen: Bool = false
+    
     var body: some View {
-        TabView {
-            ArtistsTab()
+        ZStack {
+            TabView {
+                ArtistsTab()
+                //            AlbumsTab()
+                //
+                //            ReleasesTab()
+                //
+                //            RadarTab()
+            }
             
-            //            AlbumsTab()
-            //
-            //            ReleasesTab()
-            //
-            //            RadarTab()
+            Button(action: {
+                showScreen.toggle()
+            }, label: {
+                Text("Click Here")
+            })
+            .sheet(isPresented: $showScreen, content: {
+                SpotifyLogin()
+            })
         }
     }
 }
