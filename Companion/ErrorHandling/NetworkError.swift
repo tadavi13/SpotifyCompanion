@@ -1,8 +1,8 @@
-//
+//  
 //  NetworkError.swift
-//  SpotifyApp
 //
-//  Created by YouTube on 9/22/22.
+//  @author Jason Dubon
+//  @author Tyler Davis
 //
 
 import Foundation

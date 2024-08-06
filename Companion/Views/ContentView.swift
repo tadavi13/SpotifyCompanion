@@ -1,8 +1,7 @@
 //
 //  ContentView.swift
-//  Companion
 //
-//  Created by Tyler Davis on 7/26/24.
+//  @author Tyler Davis
 //
 
 import SwiftUI

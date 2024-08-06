@@ -1,8 +1,8 @@
 //
 //  APIConstants.swift
-//  SpotifyApp
 //
-//  Created by YouTube on 9/22/22.
+//  @author Jason Dubon
+//  @author Tyler Davis
 //
 
 import Foundation
@@ -14,7 +14,7 @@ enum APIConstants {
     static let clientSecret = "e05487bcaf924251945b32e11d136aca"
     static let redirectUri = "https://www.google.com"
     static let responseType = "token"
-    static let scopes = "user-read-private"
+    static let scopes = "user-follow-read"
    
     static var authParams = [
         "response_type": responseType,
@@ -23,4 +23,3 @@ enum APIConstants {
         "scope": scopes
     ]
 }
-

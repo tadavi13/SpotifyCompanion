@@ -1,3 +1,9 @@
+//
+//  SpotifyLogin.swift
+//
+//  @author Tyler Davis
+//
+
 import UIKit
 import SwiftUI
 
@@ -11,4 +17,3 @@ struct SpotifyLogin: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
-

@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  SpotifyApp
 //
-//  Created by YouTube on 9/22/22.
+//  @author Jason Dubon
+//  @author Tyler Davis
 //
 
 import UIKit
@@ -32,8 +32,8 @@ class ViewController: UIViewController {
 
     private func makeNetworkCall() {
         Task {
-            let songs = try await APIService.shared.search()
-            print(songs)
+            let artists = try await APIService.shared.getFollowedArtists()
+            print(artists)
         }
     }
 }
@@ -62,4 +62,3 @@ extension ViewController: WKNavigationDelegate {
         }
     }
 }
-
