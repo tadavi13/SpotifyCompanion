@@ -1,8 +1,7 @@
 //  
 //  NetworkError.swift
 //
-//  @author Jason Dubon
-//  @author Tyler Davis
+//  Created by Tyler Davis on 8/2/24.
 //
 
 import Foundation

@@ -1,17 +1,20 @@
 //
 //  APIService.swift
 //
-//  @author Jason Dubon
-//  @author Tyler Davis
+//  Created by Tyler Davis on 8/2/24.
 //
 
 import Foundation
 
+/// APIService class for all functions needed to interact and get data from the Spotify WebAPI.
 class APIService {
     
+    // MARK: - URL Creation
+    
+    /// APIService for shared use across classes.
     static let shared = APIService()
     
-    // Gets the URL that contains the access token needed to access the Spotify Web API
+    /// Gets the URL to open the SpotifyLogin page when opening the login WebView.
     func getAccessTokenURL() -> URLRequest? {
         var components = URLComponents()
         components.scheme = "https"
@@ -25,7 +28,12 @@ class APIService {
         return URLRequest(url: url)
     }
     
-    // Creates a URL Request to the Spotify Web API based on parameters.
+    /// Creates a URL Request to send to the Spotify Web API based on parameters provided.
+    /// - Parameters:
+    ///   - path: The path specified in the API URL request to access the data needed.
+    ///   - queryItems: Specific filters specified in the API URL request for accessing data.
+    ///   - httpMethod: What type of http method the API URL request will use.
+    /// - Returns: A URLRequest with the specified path, queryItems, and httpMethod.
     func createURLRequest(_ path: String, _ queryItems: [URLQueryItem], _ httpMethod: String) -> URLRequest? {
         var components = URLComponents()
         components.scheme = "https"
@@ -48,6 +56,8 @@ class APIService {
         
         return urlRequest
     }
+    
+    // MARK: - API Requests
     
     // Search function
     func getFollowedArtists() async throws -> [String] {
@@ -72,6 +82,8 @@ class APIService {
         return artists
     }
 }
+
+// MARK: - Response Structs
 
 // Structs for response objects
 struct Response: Codable {

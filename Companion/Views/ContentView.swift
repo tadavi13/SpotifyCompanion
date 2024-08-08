@@ -1,7 +1,7 @@
 //
 //  ContentView.swift
 //
-//  @author Tyler Davis
+//  Created by Tyler Davis on 7/26/24.
 //
 
 import SwiftUI
@@ -105,9 +105,7 @@ struct ArtistsTab: View {
 //    }
 //}
 
-/**
- * Preview for views
- */
+/// Preview for the Content View
 #Preview {
     ContentView()
 }

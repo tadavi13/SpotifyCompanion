@@ -1,12 +1,12 @@
 //
 //  APIConstants.swift
 //
-//  @author Jason Dubon
-//  @author Tyler Davis
+//  Created by Tyler Davis on 8/2/24.
 //
 
 import Foundation
 
+/// Enum for the APIConstants needed when accessing the Spotify WebAPI
 enum APIConstants {
     static let apiHost = "api.spotify.com"
     static let authHost = "accounts.spotify.com"

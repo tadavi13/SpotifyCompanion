@@ -1,7 +1,7 @@
 //
 //  CompanionApp.swift
 //
-//  @author Tyler Davis
+//  Created by Tyler Davis on 7/26/24.
 //
 
 import SwiftUI
