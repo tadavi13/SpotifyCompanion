@@ -8,7 +8,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var showScreen: Bool = false
+    /// Presentation Manager for the visibility of the SpotifyLogin screen.
+    @ObservedObject var presentationManager = PresentationManager.shared
     
     var body: some View {
         ZStack {
@@ -20,15 +21,9 @@ struct ContentView: View {
                 //
                 //            RadarTab()
             }
-            
-            Button(action: {
-                showScreen.toggle()
-            }, label: {
-                Text("Click Here")
-            })
-            .sheet(isPresented: $showScreen, content: {
-                SpotifyLogin()
-            })
+        }
+        .fullScreenCover(isPresented: $presentationManager.isPresented) {
+            SpotifyLogin()
         }
     }
 }
