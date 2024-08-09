@@ -59,8 +59,9 @@ class APIService {
     
     // MARK: - API Requests
     
-    // Search function
-    func getFollowedArtists() async throws -> [String] {
+    /// Gets the user's followed artists and returns them as a String array of artist names.
+    /// - Returns: A string array of artists names.
+    func getFollowedArtists() async throws -> [Artist] {
         
         // Variable declarations
         let path: String = "/v1/me/following"
@@ -75,11 +76,8 @@ class APIService {
         
         let decoder = JSONDecoder()
         let results = try decoder.decode(Response.self, from: data)
-        
-        let items = results.artists.items
-     
-        let artists = items.map({$0.name})
-        return artists
+
+        return results.artists
     }
 }
 
@@ -87,7 +85,7 @@ class APIService {
 
 // Structs for response objects
 struct Response: Codable {
-    let artists: Artist
+    let artists: [Artist]
 }
 
 struct Artist: Codable {
@@ -96,4 +94,11 @@ struct Artist: Codable {
 
 struct Item: Codable {
     let name: String
+    let images: [ArtistImage]
+}
+
+struct ArtistImage: Codable {
+    let url: String
+    let height: Int
+    let width: Int
 }

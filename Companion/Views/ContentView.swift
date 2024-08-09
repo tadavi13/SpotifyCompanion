@@ -8,40 +8,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    /// Presentation Manager for the visibility of the SpotifyLogin screen.
-    @ObservedObject var presentationManager = PresentationManager.shared
+    @State private var isPresented = true
     
     var body: some View {
-        ZStack {
-            TabView {
-                ArtistsTab()
-                //            AlbumsTab()
-                //
-                //            ReleasesTab()
-                //
-                //            RadarTab()
-            }
-        }
-        .fullScreenCover(isPresented: $presentationManager.isPresented) {
-            SpotifyLogin()
-        }
-    }
-}
-
-struct ArtistsTab: View {
-    var body: some View {
-        NavigationStack() {
-            ScrollView() {
-                VStack {
-                    Rectangle()
-                        .fill(Color("BackgroundGrey"))
-                        .frame(minHeight: 800, maxHeight: .infinity)
+        if isPresented {
+            SpotifyLogin(isPresented: $isPresented)
+                .edgesIgnoringSafeArea(.all)
+        } else {
+            ZStack {
+                TabView {
+                    ArtistsTab()
+                    //            AlbumsTab()
+                    //
+                    //            ReleasesTab()
+                    //
+                    //            RadarTab()
                 }
             }
-            .navigationTitle("Artists")
-        }
-        .tabItem {
-            Text("Artists")
         }
     }
 }

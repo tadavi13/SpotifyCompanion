@@ -10,23 +10,39 @@ import SwiftUI
 
 // MARK: - SpotifyLogin
 
-/// PresentationManager for managing the visibility of the SpotifyLogin screen.
-class PresentationManager: ObservableObject {
-    static let shared = PresentationManager()
-    /// Whether the SpotifyLogin screen is presented or not.
-    @Published var isPresented: Bool = true
-}
-
 /// This struct allows for the ViewController to be embedded in the ContentView.
 struct SpotifyLogin: UIViewControllerRepresentable {
     typealias UIViewControllerType = UIViewController
+    
+    /// Whether the SpotifyLogin screen is presented or not.
+    @Binding var isPresented: Bool
+    
+    /// Coordinator class for controlling when the SpotifyLogin is presented.
+    class Coordinator: NSObject {
+        var parent: SpotifyLogin
+            
+        init(_ parent: SpotifyLogin) {
+            self.parent = parent
+        }
+        
+        /// Dismisses the SpotifyLogin by setting isPresented to false.
+        func dismiss() {
+            parent.isPresented = false
+        }
+    }
+    
+    /// Initializer for the coordinator.
+    /// - Returns: The coordinator for the SpotifyLogin.
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(self)
+    }
     
     /// Makes a ViewController instance in order to embed it in the ContentView.
     /// - Parameter context: A struct containing context of the current system state.
     /// - Returns: A ViewController instance for connecting a user's Spotify account.
     func makeUIViewController(context: Context) -> UIViewController {
         let vc = ViewController()
-        var navigationController = UINavigationController(rootViewController: vc)
+        vc.coordinator = context.coordinator
         return vc
     }
     
@@ -41,12 +57,15 @@ struct SpotifyLogin: UIViewControllerRepresentable {
 
 /// ViewController class for the user to log in to spotify in a WebView for account connection.
 class ViewController: UIViewController {
+    /// The coordinator for the ViewController to dismiss it.
+    var coordinator: SpotifyLogin.Coordinator?
+    
     /// Gets the AccessToken needed to access to SpotifyWebAPI unless it is already saved in UserDefaults.
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let token = UserDefaults.standard.value(forKey: "Authorization") {
-            makeNetworkCall()
+            close()
         } else {
             getAccessTokenFromWebView()
         }
@@ -62,13 +81,9 @@ class ViewController: UIViewController {
         view = webview
     }
     
-    /// TEMP makes a network call for current functions
-    private func makeNetworkCall() {
-        Task {
-            let artists = try await APIService.shared.getFollowedArtists()
-            print(artists)
-            PresentationManager.shared.isPresented = false
-        }
+    /// This function closes the ViewController by calling the coordinator's dismiss function.
+    @objc func close() {
+        coordinator?.dismiss()
     }
 }
 
@@ -96,8 +111,7 @@ extension ViewController: WKNavigationDelegate {
             
             tokenString = String(tokenString[..<index])
             UserDefaults.standard.setValue(tokenString, forKey: "Authorization")
-            PresentationManager.shared.isPresented = false
-            makeNetworkCall()
+            close()
         }
     }
 }
