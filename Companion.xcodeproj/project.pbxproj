@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		844F69242C67F64D0089076E /* ArtistsTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844F69232C67F64D0089076E /* ArtistsTabController.swift */; };
 		84AB8ED82C5D5B9700D02602 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB8ED72C5D5B9700D02602 /* APIConstants.swift */; };
 		84AB8EDB2C5D5DBD00D02602 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB8EDA2C5D5DBD00D02602 /* NetworkError.swift */; };
 		84AB8F182C5D742B00D02602 /* CompanionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AB8F172C5D742B00D02602 /* CompanionApp.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		844F69232C67F64D0089076E /* ArtistsTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsTabController.swift; sourceTree = "<group>"; };
 		84AB8ED72C5D5B9700D02602 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		84AB8EDA2C5D5DBD00D02602 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		84AB8F172C5D742B00D02602 /* CompanionApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanionApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				84AB8F172C5D742B00D02602 /* CompanionApp.swift */,
 				84AB8F1F2C5D7D3700D02602 /* APIService.swift */,
 				84AD9F122C652BA0001F3610 /* SpotifyLogin.swift */,
+				844F69232C67F64D0089076E /* ArtistsTabController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			files = (
 				84AB8F202C5D7D3700D02602 /* APIService.swift in Sources */,
 				84AB8EDB2C5D5DBD00D02602 /* NetworkError.swift in Sources */,
+				844F69242C67F64D0089076E /* ArtistsTabController.swift in Sources */,
 				84AD9F192C66B3A0001F3610 /* ArtistsTab.swift in Sources */,
 				84BD265C2C5AC7790092244B /* ContentView.swift in Sources */,
 				84AD9F132C652BA0001F3610 /* SpotifyLogin.swift in Sources */,

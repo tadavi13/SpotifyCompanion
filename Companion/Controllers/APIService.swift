@@ -61,7 +61,7 @@ class APIService {
     
     /// Gets the user's followed artists and returns them as a String array of artist names.
     /// - Returns: A string array of artists names.
-    func getFollowedArtists() async throws -> [Artist] {
+    func getFollowedArtists() async throws -> Artists {
         
         // Variable declarations
         let path: String = "/v1/me/following"
@@ -76,7 +76,7 @@ class APIService {
         
         let decoder = JSONDecoder()
         let results = try decoder.decode(Response.self, from: data)
-
+             
         return results.artists
     }
 }
@@ -85,19 +85,20 @@ class APIService {
 
 // Structs for response objects
 struct Response: Codable {
-    let artists: [Artist]
+    let artists: Artists
 }
 
-struct Artist: Codable {
+struct Artists: Codable {
     let items: [Item]
 }
 
-struct Item: Codable {
+struct Item: Codable, Identifiable {
+    let id: String
+    let images: [Image]
     let name: String
-    let images: [ArtistImage]
 }
 
-struct ArtistImage: Codable {
+struct Image: Codable {
     let url: String
     let height: Int
     let width: Int

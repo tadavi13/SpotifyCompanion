@@ -63,22 +63,20 @@ class ViewController: UIViewController {
     /// Gets the AccessToken needed to access to SpotifyWebAPI unless it is already saved in UserDefaults.
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let token = UserDefaults.standard.value(forKey: "Authorization") {
-            close()
-        } else {
-            getAccessTokenFromWebView()
-        }
+
+        getAccessTokenFromWebView()
     }
     
     /// Gets the Access Token using a WebView screen to log the user in.
     private func getAccessTokenFromWebView() {
-        guard let urlRequest = APIService.shared.getAccessTokenURL() else { return }
-        let webview = WKWebView()
-        
-        webview.load(urlRequest)
-        webview.navigationDelegate = self
-        view = webview
+        //if UserDefaults.standard.value(forKey: "Authorization") == nil {
+            guard let urlRequest = APIService.shared.getAccessTokenURL() else { return }
+            let webview = WKWebView()
+            
+            webview.load(urlRequest)
+            webview.navigationDelegate = self
+            view = webview
+        //}
     }
     
     /// This function closes the ViewController by calling the coordinator's dismiss function.
